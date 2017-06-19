@@ -1,0 +1,69 @@
+.navbar-header {
+	width: 230px;
+  height: 90px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 70px;
+  color: #fff;
+  text-align: center;
+  background: orange;
+  padding:10px 15px 5px 5px;
+}
+
+body {
+  background: url("crystals/crystal.jpg");
+  margin-top: 30px;
+  margin:0 auto;
+}
+
+.comp_guess {
+  height: 100px;
+  width:20%;
+  background: #fa8072;
+  margin-left: 20px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.score {
+  height: 100px;
+  width: 150px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 16px;
+  font-weight: 800;
+  background: #4682b4;
+  margin-left: 20px;
+  padding: 15px;
+}
+
+.crystal_image {
+  width:150%;
+  height: 100px;
+  margin-top: 10px;
+  margin-right: 20px;
+  padding: 5px;
+}
+
+.my_score_text {
+  width:20%;
+  height: 50px;
+  background: #fa8072;
+  margin:10px 20px;
+  padding: 10px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.my_score {
+  width:20%;
+  height: 100px;
+  background: #fa8072;
+  margin-left:20px;
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 24px;
+  font-weight: 800;
+} 

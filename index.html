@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>| Crystal Collector Game |</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<span>Crystal Collector!</span>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 comp_guess">
+				
+			</div>
+			<div class="col-md-3 score">
+				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-1">
+				<img src="crystals/crystal_diamond.jpg" class="crystal_image crystal_1">
+			</div>
+			<div class="col-md-1">
+				<img src="crystals/crystal_gomed.jpg" class="crystal_image crystal_2">
+			</div>
+			<div class="col-md-1">
+				<img src="crystals/crystal_jasper.jpg" class=" crystal_image crystal_3">
+			</div>
+			<div class="col-md-1">
+				<img src="crystals/crystal_sapphire.jpg" class="crystal_image crystal_4">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 my_score_text">
+				<p>Your score is:</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 my_score">
+				
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var win = 0;
+		var loss = 0; 
+		var computerGuess=0;
+		var result;
+		var status="Let's Play!";
+		var total = 0;
+		var crystal_array = [];
+
+		var reset = function() {
+			total=0;
+			$(".comp_guess").empty();
+			$(".my_score").empty();
+			computerGuess = Math.floor((Math.random()*102)+19);
+			var crystal_1_value = Math.floor((Math.random()*12)+1);
+			var crystal_2_value = Math.floor((Math.random()*12)+1);
+			var crystal_3_value = Math.floor((Math.random()*12)+1);
+			var crystal_4_value = Math.floor((Math.random()*12)+1);
+			$(".score").html("<p>Wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p>" + status + "</p>");
+			$(".comp_guess").append(computerGuess);
+
+			$(".crystal_1").attr("data-crystalvalue",crystal_1_value);
+			$(".crystal_2").attr("data-crystalvalue",crystal_2_value);
+			$(".crystal_3").attr("data-crystalvalue",crystal_3_value);
+			$(".crystal_4").attr("data-crystalvalue",crystal_4_value);
+		}
+			
+
+		$(document).ready(function() {
+
+			reset();
+			
+			$(".crystal_image").on("click", function () {
+				$(".my_score").empty();
+				var crystalValue = ($(this).attr("data-crystalvalue"));
+				crystalValue = parseInt(crystalValue);
+				total += crystalValue;
+				$(".my_score").append(total);
+				if(total === computerGuess) {
+					win++;
+					status="YOU WON!";
+					$(".score").html("<p>Wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p>" + status + "</p>");
+					reset();
+				}
+
+				if(total > computerGuess) {
+					loss++;
+					status="YOU LOST!";
+					$(".score").html("<p>Wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p>" + status + "</p>");
+					reset();
+				}
+			});
+		});
+	</script>
+</body>
+</html>
