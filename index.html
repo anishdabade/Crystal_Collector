@@ -57,26 +57,28 @@
 		var status="Let's Play!";
 		var total = 0;
 		var crystal_array = [];
-
+		var crystal_value=[];
+/**************** Reset function ***************/
 		var reset = function() {
 			total=0;
+
 			$(".comp_guess").empty();
 			$(".my_score").empty();
+			$(".my_score").append(total);
+/********* Generate random numbers for computer and four crystals **********/
 			computerGuess = Math.floor((Math.random()*102)+19);
 			var crystal_1_value = Math.floor((Math.random()*12)+1);
 			var crystal_2_value = Math.floor((Math.random()*12)+1);
 			var crystal_3_value = Math.floor((Math.random()*12)+1);
 			var crystal_4_value = Math.floor((Math.random()*12)+1);
 			$(".score").html("<p>Wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p>" + status + "</p>");
-			$(".comp_guess").append(computerGuess);
-
+			$(".comp_guess").append(computerGuess);	
 			$(".crystal_1").attr("data-crystalvalue",crystal_1_value);
 			$(".crystal_2").attr("data-crystalvalue",crystal_2_value);
 			$(".crystal_3").attr("data-crystalvalue",crystal_3_value);
 			$(".crystal_4").attr("data-crystalvalue",crystal_4_value);
 		}
 			
-
 		$(document).ready(function() {
 
 			reset();
@@ -87,14 +89,15 @@
 				crystalValue = parseInt(crystalValue);
 				total += crystalValue;
 				$(".my_score").append(total);
-				if(total === computerGuess) {
+
+				if(total === computerGuess) {                // Check for the winning moment
 					win++;
 					status="YOU WON!";
 					$(".score").html("<p>Wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p>" + status + "</p>");
 					reset();
 				}
 
-				if(total > computerGuess) {
+				if(total > computerGuess) {                  // Check for the losing moment
 					loss++;
 					status="YOU LOST!";
 					$(".score").html("<p>Wins: " + win + "</p>" + "<p> Losses: " + loss + "</p>" + "<p>" + status + "</p>");
